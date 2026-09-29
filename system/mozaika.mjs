@@ -23,7 +23,20 @@ Hooks.once("ready", () => {
   initSocket();
   watchTimers();
   MosaicPanel.open();
+  offerUkrainian();
 });
+
+/** The game is Ukrainian; offer the switch once to anyone whose client runs in another language. */
+async function offerUkrainian() {
+  if (game.i18n.lang === "uk") return;
+  try { if (localStorage.getItem("mozaika.langOffered")) return; localStorage.setItem("mozaika.langOffered", "1"); } catch { return; }
+  const ok = await foundry.applications.api.DialogV2.confirm({
+    window: { title: "Мозаїка" }, classes: ["mozaika", "moz-dialog"],
+    content: "<p>Перемкнути інтерфейс на українську?</p><p class='hint'>Switch the interface to Ukrainian? (Configure Settings → Core → Language)</p>",
+    rejectClose: false
+  });
+  if (ok) { await game.settings.set("core", "language", "uk"); foundry.utils.debouncedReload(); }
+}
 
 /* A button in the left toolbar to bring the Mosaic back. */
 Hooks.on("getSceneControlButtons", controls => {
