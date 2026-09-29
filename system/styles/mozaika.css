@@ -180,3 +180,6 @@
 @media (max-width: 640px) { .moz-step .two { grid-template-columns: 1fr; } }
 .journal-entry-page .moz-how { background: #fbe3ec; border-left: 4px solid #1d2b7a; padding: 4px 8px; border-radius: 4px; }
 .mozaika.moz-panel.moz-drop .window-content { outline: 4px dashed var(--moz-yellow); outline-offset: -8px; }
+/* dialog labels were pink-on-pink */
+.mozaika.moz-dialog .form-group > label, .mozaika .form-group label { color: var(--moz-navy); font-family: "MozRound", sans-serif; font-weight: bold; }
+.mozaika.moz-dialog .window-content { color: var(--moz-ink); }
