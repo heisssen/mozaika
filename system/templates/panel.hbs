@@ -1,0 +1,157 @@
+<div class="moz-wrap">
+  {{!-- ============ SETUP ============ --}}
+  {{#if phase.setup}}
+  <div class="moz-scroll">
+    <header class="moz-banner"><h2>{{localize "MOZ.Setup.Title"}}</h2><p>{{localize "MOZ.Setup.Lead"}}</p></header>
+
+    <section class="moz-step">
+      <h3><span class="n">1</span> {{localize "MOZ.Safety.Title"}}</h3>
+      <p class="hint">{{localize "MOZ.Safety.Lead"}}</p>
+      <div class="two">
+        <label>{{localize "MOZ.Safety.Ok"}}<textarea data-op="safety" data-key="ok" rows="2">{{s.safety.ok}}</textarea></label>
+        <label>{{localize "MOZ.Safety.NotOk"}}<textarea data-op="safety" data-key="notOk" rows="2">{{s.safety.notOk}}</textarea></label>
+      </div>
+    </section>
+
+    <section class="moz-step">
+      <h3><span class="n">2</span> {{localize "MOZ.Setup.Entities"}}</h3>
+      <p class="hint">{{localize "MOZ.Setup.EntitiesLead"}}</p>
+      <ol class="moz-seats">
+        {{#each seats}}
+        <li data-uuid="{{uuid}}" class="{{#if mine}}mine{{/if}}">
+          <img src="{{img}}" data-action="openEntity" alt="">
+          <div><strong data-action="openEntity">{{name}}</strong><small>{{summary}}</small></div>
+          {{#if ../isGM}}<a data-action="seat" data-delta="-1" data-tooltip="{{localize 'MOZ.Setup.SeatUp'}}"><i class="fa-solid fa-arrow-up"></i></a>
+          <a data-action="seat" data-delta="1" data-tooltip="{{localize 'MOZ.Setup.SeatDown'}}"><i class="fa-solid fa-arrow-down"></i></a>
+          <a data-action="seat" data-remove="1"><i class="fa-solid fa-xmark"></i></a>{{/if}}
+        </li>
+        {{else}}<li class="empty">{{localize "MOZ.Setup.NoEntities"}}</li>{{/each}}
+      </ol>
+      {{#unless mine}}<button type="button" class="moz-big" data-action="createEntity" data-mine="1"><i class="fa-solid fa-wand-magic-sparkles"></i> {{localize "MOZ.Setup.CreateMine"}}</button>{{/unless}}
+      {{#if isGM}}<button type="button" data-action="createEntity" class="subtle"><i class="fa-solid fa-plus"></i> {{localize "MOZ.Setup.CreateExtra"}}</button>{{/if}}
+    </section>
+
+    <section class="moz-step">
+      <h3><span class="n">3</span> {{localize "MOZ.Query.Title"}}</h3>
+      <p class="hint">{{localize "MOZ.Query.Lead"}}</p>
+      {{#if target}}
+      <label>{{{localize "MOZ.Query.ForRight" name=target.name}}}
+        <textarea data-op="writeQuery" data-uuid="{{target.uuid}}" rows="2" placeholder="{{localize 'MOZ.Query.Placeholder'}}">{{target.system.query}}</textarea></label>
+      {{else}}<p class="hint">{{localize "MOZ.Query.NeedSeats"}}</p>{{/if}}
+      {{#if mine}}<p class="moz-myquery">{{localize "MOZ.Query.Yours"}}: <em>{{#if mine.system.query}}{{mine.system.query}}{{else}}…{{/if}}</em></p>{{/if}}
+    </section>
+
+    <section class="moz-step">
+      <h3><span class="n">4</span> {{localize "MOZ.Quest.Title"}}</h3>
+      <p class="hint">{{localize "MOZ.Quest.Lead"}}</p>
+      <textarea data-op="quest" rows="2" placeholder="{{localize 'MOZ.Quest.Placeholder'}}">{{s.quest}}</textarea>
+    </section>
+
+    <section class="moz-step">
+      <h3><span class="n">5</span> {{localize "MOZ.Options.Title"}}</h3>
+      <div class="moz-options">
+        <label>{{localize "MOZ.Options.StartShards"}} <input type="number" min="0" max="20" data-op="options" data-key="startShards" value="{{s.options.startShards}}"></label>
+        <label>{{localize "MOZ.Options.Seconds"}} <input type="number" min="10" max="300" data-op="options" data-key="base" value="{{s.options.base}}"></label>
+        <label class="checkbox"><input type="checkbox" data-op="options" data-key="decay" {{checked s.options.decay}}> {{localize "MOZ.Options.Decay"}}</label>
+        <label class="checkbox"><input type="checkbox" data-op="options" data-key="scenes" {{checked s.options.scenes}}> {{localize "MOZ.Options.Scenes"}}</label>
+      </div>
+      <p class="hint">{{localize "MOZ.Options.DecayHint"}}</p>
+    </section>
+
+    <button type="button" class="moz-big primary" data-action="start" {{#unless seats.length}}disabled{{/unless}}><i class="fa-solid fa-play"></i> {{localize "MOZ.Setup.Start"}}</button>
+  </div>
+  {{/if}}
+
+  {{!-- ============ PLAY ============ --}}
+  {{#if phase.play}}
+  <header class="moz-top">
+    <div class="moz-timer" style="--p:0"><span class="secs">—</span><small>{{localize "MOZ.Timer.Sec"}}</small></div>
+    <div class="moz-arch">
+      {{#if s.dimension.n}}
+      <div class="dim">{{localize "MOZ.Dimension.Label"}} {{s.dimension.n}}
+        <input type="text" data-op="dimensionTitle" data-key="title" value="{{s.dimension.title}}" placeholder="{{localize 'MOZ.Dimension.TitlePlaceholder'}}"></div>
+      <div class="who"><i class="fa-solid fa-crown"></i> {{localize "MOZ.Dimension.Architect"}}: <strong>{{architect.name}}</strong></div>
+      <div class="btns">
+        {{#if timerRunning}}
+          {{#if s.timer.paused}}<button type="button" data-action="pause" data-pause="0"><i class="fa-solid fa-play"></i></button>
+          {{else}}<button type="button" data-action="pause" data-pause="1"><i class="fa-solid fa-pause"></i></button>{{/if}}
+        {{else}}
+          {{#if (moz-or isArchitect isGM)}}<button type="button" class="primary" data-action="startMonologue"><i class="fa-solid fa-microphone"></i> {{localize "MOZ.Timer.Start"}} ({{nextSeconds}} {{localize "MOZ.Timer.Sec"}})</button>{{/if}}
+        {{/if}}
+      </div>
+      {{else}}<p class="hint">{{localize "MOZ.Dimension.NoneYet"}}</p>{{/if}}
+    </div>
+    <button type="button" class="moz-x" data-action="xcard" data-tooltip="{{localize 'MOZ.Safety.XCardTip'}}">X</button>
+  </header>
+
+  <div class="moz-scroll">
+    <section class="moz-quest"><label><i class="fa-solid fa-compass"></i> {{localize "MOZ.Quest.Label"}}</label>
+      <input type="text" data-op="quest" value="{{s.quest}}"></section>
+
+    {{#if s.dimension.n}}
+    <section class="moz-dimension">
+      <form class="moz-add-reality">
+        <input name="text" type="text" autocomplete="off" placeholder="{{#if isArchitect}}{{localize 'MOZ.Reality.PlaceholderArch'}}{{else}}{{localize 'MOZ.Reality.Placeholder'}}{{/if}}">
+        <button type="submit"><i class="fa-solid fa-plus"></i></button>
+      </form>
+      <ol class="moz-realities">
+        {{#each realities}}
+        <li data-rid="{{id}}" class="{{#if crossed}}crossed{{/if}} {{#if architect}}arch{{/if}}">
+          <span class="t">{{text}}</span> <span class="by">{{by}}</span>
+          {{#unless crossed}}<a data-action="changeReality" data-tooltip="{{localize 'MOZ.Reality.ChangeTip'}}"><i class="fa-solid fa-wand-sparkles"></i></a>{{/unless}}
+        </li>
+        {{else}}<li class="empty">{{localize "MOZ.Dimension.Empty"}}</li>{{/each}}
+      </ol>
+    </section>
+    {{/if}}
+
+    <section class="moz-shards">
+      <h3>{{localize "MOZ.Shard.Title"}}</h3>
+      {{#each seats}}
+      <div class="moz-holder {{#if architect}}architect{{/if}} {{#if mine}}mine{{/if}}" data-uuid="{{uuid}}">
+        <img class="face" src="{{img}}" data-action="openEntity" alt="">
+        <div class="info"><strong>{{name}}</strong><small>{{query}}</small>
+          <div class="chips">{{#each chips}}<img src="{{img}}" alt="">{{/each}}{{#each reds}}<span class="red"></span>{{/each}}
+            <span class="count">{{shards}}{{#if red}} + {{red}}<i class="fa-solid fa-fire"></i>{{/if}}</span></div>
+        </div>
+        <div class="acts">
+          {{#unless mine}}<a data-action="award" data-tooltip="{{localize 'MOZ.Shard.AwardTip'}}"><i class="fa-solid fa-gem"></i>+</a>{{/unless}}
+          {{#if owner}}<a data-action="useShard" data-tooltip="{{localize 'MOZ.Shard.UseTip'}}"><i class="fa-solid fa-wand-sparkles"></i></a>
+          <a data-action="give" data-tooltip="{{localize 'MOZ.Shard.GiveTip'}}"><i class="fa-solid fa-hand-holding-heart"></i></a>{{/if}}
+          {{#if canExchange}}<a data-action="exchange" data-tooltip="{{localize 'MOZ.Shard.ExchangeTip'}}"><i class="fa-solid fa-fire"></i></a>{{/if}}
+        </div>
+      </div>
+      {{/each}}
+    </section>
+  </div>
+
+  <footer class="moz-foot">
+    <button type="button" class="moz-shout-btn" data-action="newDimension"><i class="fa-solid fa-door-open"></i> {{localize "MOZ.Dimension.Shout"}}</button>
+    <button type="button" data-action="complete" class="subtle"><i class="fa-solid fa-flag-checkered"></i> {{localize "MOZ.Phase.Complete"}}</button>
+  </footer>
+  {{/if}}
+
+  {{!-- ============ EPILOGUE ============ --}}
+  {{#if phase.epilogue}}
+  <header class="moz-top">
+    <div class="moz-timer" style="--p:0"><span class="secs">—</span><small>{{localize "MOZ.Timer.Sec"}}</small></div>
+    <div class="moz-arch"><div class="dim">{{localize "MOZ.Phase.Epilogue"}}</div>
+      <div class="who"><i class="fa-solid fa-feather"></i> <strong>{{current.name}}</strong></div>
+      <div class="btns"><button type="button" data-action="nextEpilogue"><i class="fa-solid fa-forward"></i> {{localize "MOZ.Phase.NextEpilogue"}}</button></div></div>
+    <button type="button" class="moz-x" data-action="xcard">X</button>
+  </header>
+  <div class="moz-scroll">
+    <p class="hint">{{localize "MOZ.Phase.EpilogueLead"}}</p>
+    {{#if mine}}<label>{{localize "MOZ.Phase.EpilogueMine"}}<textarea data-op="epilogueText" data-uuid="{{mine.uuid}}" rows="4">{{mine.system.epilogue}}</textarea></label>{{/if}}
+  </div>
+  {{/if}}
+
+  {{!-- ============ DONE ============ --}}
+  {{#if phase.done}}
+  <div class="moz-scroll moz-done">
+    <h2>{{localize "MOZ.Phase.Done"}}</h2>
+    {{#if chronicle}}<button type="button" class="moz-big primary" data-action="openChronicle"><i class="fa-solid fa-book"></i> {{chronicle.name}}</button>{{/if}}
+    <button type="button" class="moz-big" data-action="reset"><i class="fa-solid fa-rotate"></i> {{localize "MOZ.Phase.Reset"}}</button>
+  </div>
+  {{/if}}
+</div>

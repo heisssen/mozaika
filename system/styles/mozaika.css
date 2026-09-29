@@ -1,0 +1,180 @@
+/* «Мозаїка: Нашвидкуруч!» — zine look: pink paper, navy bars, hand-lettered type. */
+@font-face { font-family: "MozDisplay"; src: url("../assets/fonts/RuslanDisplay.ttf"); font-display: swap; }
+@font-face { font-family: "MozBody"; src: url("../assets/fonts/Neucha.ttf"); font-display: swap; }
+@font-face { font-family: "MozHand"; src: url("../assets/fonts/Caveat.ttf"); font-display: swap; }
+@font-face { font-family: "MozRound"; src: url("../assets/fonts/Comfortaa.ttf"); font-display: swap; }
+
+.mozaika {
+  --moz-pink: #e98fb0;
+  --moz-pink-2: #f6c4d6;
+  --moz-paper: #fbe3ec;
+  --moz-navy: #1d2b7a;
+  --moz-navy-2: #3040a0;
+  --moz-red: #d6263b;
+  --moz-ink: #1a1633;
+  --moz-yellow: #ffd84a;
+  font-family: "MozBody", "Signika", sans-serif;
+  color: var(--moz-ink);
+}
+
+/* ---------- windows ---------- */
+.application.mozaika { max-height: calc(100vh - 20px); max-width: calc(100vw - 20px); }
+.application.mozaika .window-header { background: var(--moz-navy); color: #fff; border-bottom: 3px solid var(--moz-ink); }
+.application.mozaika .window-title { font-family: "MozDisplay", sans-serif; letter-spacing: .04em; }
+.application.mozaika .window-content {
+  background: var(--moz-pink) radial-gradient(circle at 20% 10%, rgba(255,255,255,.25), transparent 50%);
+  color: var(--moz-ink); padding: 0; overflow: hidden; display: flex; flex-direction: column;
+}
+.mozaika .moz-wrap, .mozaika .moz-sheet-body { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.mozaika .moz-scroll { flex: 1; min-height: 0; overflow-y: auto; padding: 10px 14px 16px; }
+.mozaika.moz-sheet .moz-sheet-body { overflow-y: auto; padding: 10px 14px 16px; display: block; }
+.mozaika h2, .mozaika h3 { font-family: "MozDisplay", sans-serif; color: var(--moz-navy); border: none; margin: 0 0 6px; font-weight: normal; }
+.mozaika h3 { font-size: 1.2em; display: flex; align-items: center; gap: 8px; }
+.mozaika h3 a { margin-left: auto; font-family: "MozBody", sans-serif; font-size: .8em; color: var(--moz-navy-2); }
+.mozaika .hint { font-family: "MozHand", cursive; font-size: 1.15em; color: #4b2340; margin: 2px 0 6px; }
+.mozaika input[type=text], .mozaika input[type=number], .mozaika textarea, .mozaika select {
+  background: var(--moz-paper); border: 2px solid var(--moz-ink); border-radius: 6px; color: var(--moz-ink);
+  font-family: "MozBody", sans-serif; font-size: 1.05em;
+}
+.mozaika textarea { width: 100%; resize: vertical; min-height: 2.6em; }
+.mozaika button { font-family: "MozBody", sans-serif; background: var(--moz-paper); border: 2px solid var(--moz-ink); border-radius: 8px; color: var(--moz-ink); box-shadow: 2px 2px 0 var(--moz-ink); }
+.mozaika button:hover:not([disabled]) { background: #fff; transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--moz-ink); }
+.mozaika button.primary { background: var(--moz-navy); color: #fff; }
+.mozaika button.primary:hover:not([disabled]) { background: var(--moz-navy-2); }
+.mozaika button.subtle { box-shadow: none; background: transparent; }
+.mozaika button[disabled] { opacity: .5; }
+.mozaika .moz-big { width: 100%; font-size: 1.25em; padding: 6px; margin: 6px 0; }
+.mozaika a[data-action] { cursor: pointer; }
+.mozaika label.checkbox { display: flex; align-items: center; gap: 4px; }
+
+/* ---------- setup ---------- */
+.moz-banner { background: var(--moz-navy); color: #fff; margin: -10px -14px 10px; padding: 10px 14px; transform: rotate(-.6deg); }
+.moz-banner h2 { color: var(--moz-yellow); font-size: 2em; margin: 0; }
+.moz-banner p { margin: 0; font-family: "MozHand", cursive; font-size: 1.2em; }
+.moz-step { background: var(--moz-pink-2); border: 2px solid var(--moz-ink); border-radius: 10px; padding: 8px 10px; margin-bottom: 10px; }
+.moz-step .n { display: inline-grid; place-items: center; width: 1.5em; height: 1.5em; border-radius: 50%; background: var(--moz-navy); color: #fff; font-size: .85em; }
+.moz-step .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.moz-options { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.moz-options input[type=number] { width: 4.5em; }
+.moz-seats { list-style: none; padding: 0; margin: 0 0 6px; }
+.moz-seats li { display: flex; align-items: center; gap: 8px; padding: 4px; border-bottom: 1px dashed rgba(0,0,0,.3); }
+.moz-seats li.mine { background: rgba(255,255,255,.35); border-radius: 6px; }
+.moz-seats img { width: 40px; height: 40px; border: 2px solid var(--moz-ink); border-radius: 8px; object-fit: cover; background: var(--moz-paper); cursor: pointer; }
+.moz-seats li > div { flex: 1; display: flex; flex-direction: column; }
+.moz-seats strong { font-family: "MozRound", sans-serif; cursor: pointer; }
+.moz-seats small { font-family: "MozHand", cursive; font-size: 1.1em; }
+.moz-myquery { font-family: "MozHand", cursive; font-size: 1.2em; }
+
+/* ---------- play: top bar ---------- */
+.moz-top { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--moz-navy); color: #fff; flex: 0 0 auto; }
+.moz-top .hint { color: #ffe; }
+.moz-timer {
+  --p: 0; flex: 0 0 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; align-content: center;
+  background: conic-gradient(var(--moz-yellow) calc(var(--p) * 360deg), rgba(255,255,255,.15) 0); position: relative;
+}
+.moz-timer::before { content: ""; position: absolute; inset: 7px; border-radius: 50%; background: var(--moz-navy); }
+.moz-timer .secs, .moz-timer small { position: relative; line-height: 1; }
+.moz-timer .secs { font-family: "MozDisplay", sans-serif; font-size: 1.9em; color: #fff; }
+.moz-timer small { font-size: .75em; opacity: .8; }
+.moz-timer.urgent { background: conic-gradient(var(--moz-red) calc(var(--p) * 360deg), rgba(255,255,255,.15) 0); animation: moz-pulse 1s infinite; }
+.moz-timer.paused { filter: grayscale(1); }
+@keyframes moz-pulse { 50% { transform: scale(1.06); } }
+.moz-arch { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.moz-arch .dim { font-family: "MozDisplay", sans-serif; display: flex; gap: 6px; align-items: center; color: var(--moz-yellow); }
+.moz-arch .dim input { flex: 1; min-width: 0; background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.5); }
+.moz-arch .who strong { font-family: "MozRound", sans-serif; }
+.moz-arch .btns { display: flex; gap: 6px; }
+.moz-arch .btns button { flex: 0 0 auto; }
+.moz-x {
+  flex: 0 0 48px; height: 48px; border-radius: 8px; font-family: "MozDisplay", sans-serif; font-size: 1.8em; line-height: 1;
+  background: #fff; color: var(--moz-red); border: 3px solid var(--moz-red); box-shadow: none; padding: 0;
+}
+.mozaika .moz-x:hover { background: var(--moz-red); color: #fff; }
+
+/* ---------- play: quest, realities ---------- */
+.moz-quest { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.moz-quest label { font-family: "MozDisplay", sans-serif; color: var(--moz-navy); white-space: nowrap; }
+.moz-quest input { flex: 1; font-family: "MozHand", cursive; font-size: 1.25em; }
+.moz-dimension { background: var(--moz-paper); border: 2px solid var(--moz-ink); border-radius: 10px; padding: 8px; margin-bottom: 10px; box-shadow: 3px 3px 0 var(--moz-ink); }
+.moz-add-reality { display: flex; gap: 6px; }
+.moz-add-reality input { flex: 1; }
+.moz-add-reality button { flex: 0 0 36px; }
+.moz-realities { list-style: none; margin: 8px 0 0; padding: 0; max-height: none; }
+.moz-realities li { font-family: "MozHand", cursive; font-size: 1.3em; line-height: 1.15; padding: 3px 4px; border-bottom: 1px dashed rgba(0,0,0,.2); display: flex; gap: 6px; align-items: baseline; }
+.moz-realities li .t { flex: 1; }
+.moz-realities li .by { font-family: "MozBody", sans-serif; font-size: .65em; opacity: .7; }
+.moz-realities li.arch::before { content: "♛"; color: var(--moz-navy); }
+.moz-realities li.crossed .t { text-decoration: line-through; opacity: .5; }
+.moz-realities li.empty { opacity: .6; }
+
+/* ---------- shards ---------- */
+.moz-shards h3 { margin-top: 4px; }
+.moz-holder { display: flex; align-items: center; gap: 8px; padding: 6px; margin-bottom: 6px; border: 2px solid transparent; border-radius: 10px; background: rgba(255,255,255,.25); }
+.moz-holder.architect { border-color: var(--moz-navy); background: rgba(255,255,255,.5); }
+.moz-holder.mine { box-shadow: inset 4px 0 0 var(--moz-yellow); }
+.moz-holder .face { width: 46px; height: 46px; border: 2px solid var(--moz-ink); border-radius: 8px; object-fit: cover; background: var(--moz-paper); cursor: pointer; flex: 0 0 auto; }
+.moz-holder .info { flex: 1; min-width: 0; }
+.moz-holder .info strong { font-family: "MozRound", sans-serif; display: block; }
+.moz-holder .info small { font-family: "MozHand", cursive; font-size: 1.05em; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.moz-holder .acts { display: flex; gap: 8px; font-size: 1.1em; color: var(--moz-navy); }
+.moz-holder .acts a:hover { color: var(--moz-red); }
+.mozaika .chips, .mozaika .shard-line { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; min-height: 22px; }
+.mozaika .chips img, .mozaika .shard-line img { width: 22px; height: 22px; border: none; object-fit: contain; filter: drop-shadow(1px 1px 0 rgba(0,0,0,.4)); }
+.mozaika .chips img:nth-child(3n+1), .mozaika .shard-line img:nth-child(3n+1) { transform: rotate(-12deg); }
+.mozaika .chips img:nth-child(3n+2), .mozaika .shard-line img:nth-child(3n+2) { transform: rotate(9deg); }
+.mozaika span.red { width: 18px; height: 18px; background: var(--moz-red); clip-path: polygon(50% 0, 100% 38%, 80% 100%, 20% 100%, 0 38%); display: inline-block; }
+.mozaika .count { margin-left: 4px; font-family: "MozRound", sans-serif; font-weight: bold; }
+.mozaika .count i { color: var(--moz-red); margin-left: 2px; }
+
+/* ---------- footer ---------- */
+.moz-foot { flex: 0 0 auto; display: flex; gap: 8px; padding: 8px 12px; background: var(--moz-navy); }
+.moz-foot .moz-shout-btn { flex: 1; font-family: "MozDisplay", sans-serif; font-size: 1.3em; background: var(--moz-yellow); }
+.moz-foot button.subtle { color: #fff; border-color: #fff; }
+.moz-done { text-align: center; }
+.moz-done h2 { font-size: 2.2em; margin: 20px 0; }
+
+/* ---------- entity sheet ---------- */
+.moz-sheet-head { display: flex; gap: 12px; margin-bottom: 10px; }
+.moz-sheet-head .portrait { width: 110px; height: 110px; border: 3px solid var(--moz-ink); border-radius: 12px; object-fit: cover; background: var(--moz-paper); cursor: pointer; transform: rotate(-2deg); box-shadow: 3px 3px 0 var(--moz-ink); }
+.moz-sheet-head .head-main { flex: 1; min-width: 0; }
+.mozaika input.moz-name { font-family: "MozDisplay", sans-serif; font-size: 1.8em; height: auto; background: transparent; border: none; border-bottom: 3px solid var(--moz-navy); border-radius: 0; color: var(--moz-navy); width: 100%; }
+.moz-summary { font-family: "MozHand", cursive; font-size: 1.45em; margin: 4px 0; line-height: 1.1; }
+.moz-box { background: var(--moz-pink-2); border: 2px solid var(--moz-ink); border-radius: 10px; padding: 8px 10px; margin-bottom: 10px; }
+.moz-table-row { display: grid; grid-template-columns: 5.5em 1fr 24px; align-items: center; gap: 6px; margin-bottom: 4px; }
+.moz-table-row label { font-family: "MozRound", sans-serif; font-weight: bold; color: var(--moz-navy); }
+.moz-table-row a { color: var(--moz-navy); font-size: 1.2em; text-align: center; }
+.moz-digits { display: flex; gap: 6px; margin: 6px 0; }
+.moz-digits input { flex: 1; }
+.moz-digits button { flex: 0 0 auto; }
+.moz-look { display: block; margin-top: 4px; font-family: "MozRound", sans-serif; }
+.moz-query-box textarea { font-family: "MozHand", cursive; font-size: 1.35em; }
+.moz-query-box .from { font-family: "MozHand", cursive; font-size: 1.05em; }
+.moz-archive { margin: 6px 0 0; padding-left: 1.4em; }
+.moz-archive li { font-family: "MozHand", cursive; font-size: 1.2em; }
+.moz-archive .date { font-family: "MozBody", sans-serif; font-size: .65em; opacity: .65; }
+.moz-archive li.empty { list-style: none; opacity: .6; }
+.moz-shard-box .btns { display: flex; gap: 6px; flex-wrap: wrap; }
+.moz-sheet prose-mirror { background: var(--moz-paper); border-radius: 6px; min-height: 90px; display: block; }
+
+/* ---------- dialogs ---------- */
+.moz-dialog .window-content { padding: 10px 14px; }
+.moz-dialog .moz-shout { font-family: "MozDisplay", sans-serif; font-size: 2em; color: var(--moz-navy); text-align: center; margin: 0 0 6px; transform: rotate(-2deg); }
+.moz-dialog .form-group { margin-bottom: 6px; }
+.moz-dialog blockquote { font-family: "MozHand", cursive; font-size: 1.3em; margin: 6px 0; }
+
+/* ---------- chat cards ---------- */
+.chat-message .moz-card { font-family: "MozBody", sans-serif; background: var(--moz-pink, #e98fb0); border: 2px solid #1a1633; border-radius: 10px; padding: 0; overflow: hidden; color: #1a1633; }
+.chat-message .moz-card h3 { margin: 0; padding: 5px 8px; background: #1d2b7a; color: #fff; font-family: "MozDisplay", sans-serif; font-weight: normal; font-size: 1.15em; border: none; }
+.chat-message .moz-card .moz-body { padding: 6px 8px; font-size: 1.05em; }
+.chat-message .moz-card .moz-body blockquote, .chat-message .moz-card em { font-family: "MozHand", cursive; font-size: 1.2em; }
+.chat-message .moz-card .from { display: block; font-size: .8em; opacity: .75; margin-top: 3px; }
+.chat-message .moz-card.moz-xcard h3, .chat-message .moz-card.moz-red h3 { background: #d6263b; }
+.chat-message .moz-card.moz-dimension h3 { background: #ffd84a; color: #1d2b7a; }
+.chat-message .moz-card.moz-award h3 { background: #3040a0; }
+
+/* ---------- chronicle pages ---------- */
+.journal-entry-page .moz-realities { font-family: "MozHand", cursive; font-size: 1.2em; }
+.journal-entry-page .moz-realities li.crossed { opacity: .55; }
+
+@media (max-width: 640px) { .moz-step .two { grid-template-columns: 1fr; } }
+.journal-entry-page .moz-how { background: #fbe3ec; border-left: 4px solid #1d2b7a; padding: 4px 8px; border-radius: 4px; }

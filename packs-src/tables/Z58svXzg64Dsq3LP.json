@@ -1,0 +1,246 @@
+{
+  "_id": "Z58svXzg64Dsq3LP",
+  "_key": "!tables!Z58svXzg64Dsq3LP",
+  "name": "…до того ж… (риса)",
+  "img": "icons/svg/d10-grey.svg",
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "description": "«Мозаїка: Нашвидкуруч!» © 2025 Стасів Андрій, CC BY 4.0. Грань 0 на d10 — рядок 10.",
+  "results": [
+    {
+      "_id": "KYwIxHPTIS2Vf9uu",
+      "_key": "!tables.results!Z58svXzg64Dsq3LP.KYwIxHPTIS2Vf9uu",
+      "type": "text",
+      "name": "ніколи не *щось*",
+      "description": "ніколи не *щось*",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "YHboCOMQAdOB4wyY",
+      "_key": "!tables.results!Z58svXzg64Dsq3LP.YHboCOMQAdOB4wyY",
+      "type": "text",
+      "name": "колекціонує *щось*",
+      "description": "колекціонує *щось*",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "vgT4rHuvMUpdTRId",
+      "_key": "!tables.results!Z58svXzg64Dsq3LP.vgT4rHuvMUpdTRId",
+      "type": "text",
+      "name": "забуває про *щось*",
+      "description": "забуває про *щось*",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "WPKiUTWqV0Id0KR1",
+      "_key": "!tables.results!Z58svXzg64Dsq3LP.WPKiUTWqV0Id0KR1",
+      "type": "text",
+      "name": "ненавидить *щось*",
+      "description": "ненавидить *щось*",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "IniZlUqMiEVDiZjZ",
+      "_key": "!tables.results!Z58svXzg64Dsq3LP.IniZlUqMiEVDiZjZ",
+      "type": "text",
+      "name": "шукає *щось*",
+      "description": "шукає *щось*",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "lI88dBfjUzDcUmmL",
+      "_key": "!tables.results!Z58svXzg64Dsq3LP.lI88dBfjUzDcUmmL",
+      "type": "text",
+      "name": "боїться *щось*",
+      "description": "боїться *щось*",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "IwzoYmMwYcYX8a4C",
+      "_key": "!tables.results!Z58svXzg64Dsq3LP.IwzoYmMwYcYX8a4C",
+      "type": "text",
+      "name": "вивчає *щось*",
+      "description": "вивчає *щось*",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "oOs2IEOTo96BdECk",
+      "_key": "!tables.results!Z58svXzg64Dsq3LP.oOs2IEOTo96BdECk",
+      "type": "text",
+      "name": "любить *щось*",
+      "description": "любить *щось*",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "GxQWuGiq15hZv3Fs",
+      "_key": "!tables.results!Z58svXzg64Dsq3LP.GxQWuGiq15hZv3Fs",
+      "type": "text",
+      "name": "створює *щось*",
+      "description": "створює *щось*",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "95GF3TJZdfFeghQ3",
+      "_key": "!tables.results!Z58svXzg64Dsq3LP.95GF3TJZdfFeghQ3",
+      "type": "text",
+      "name": "мріє про *щось*",
+      "description": "мріє про *щось*",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    }
+  ],
+  "folder": null,
+  "sort": 200,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14",
+    "systemId": "mozaika",
+    "systemVersion": "0.1.0",
+    "createdTime": 0,
+    "modifiedTime": 0,
+    "lastModifiedBy": null
+  }
+}

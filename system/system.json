@@ -1,0 +1,105 @@
+{
+  "id": "mozaika",
+  "title": "Мозаїка: Нашвидкуруч!",
+  "description": "Кооперативна настільна рольова гра серед яскравого сюрреалізму й абсурду — без ведучого, без підготовки та без граників. Автоматизація для Foundry VTT: таймер Архітектора, виміри й реалії, запити й забава, уламки, хроніка світу. Гра © 2025 Стасів Андрій, CC BY 4.0.",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14"
+  },
+  "authors": [
+    {
+      "name": "Стасів Андрій «Дячок» (гра)",
+      "url": "https://firstfloor.itch.io/mosaic"
+    },
+    {
+      "name": "Суцільний Максим (ілюстрації)"
+    },
+    {
+      "name": "heisssen (система для Foundry)"
+    }
+  ],
+  "esmodules": [
+    "mozaika.mjs"
+  ],
+  "styles": [
+    "styles/mozaika.css"
+  ],
+  "languages": [
+    {
+      "lang": "uk",
+      "name": "Українська",
+      "path": "lang/uk.json"
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "entity": {
+        "htmlFields": [
+          "notes"
+        ]
+      }
+    }
+  },
+  "packs": [
+    {
+      "name": "entities",
+      "label": "Сутності (приклади)",
+      "path": "packs/entities",
+      "type": "Actor",
+      "system": "mozaika",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "tables",
+      "label": "Таблиці сутностей",
+      "path": "packs/tables",
+      "type": "RollTable",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "rules",
+      "label": "Правила «Нашвидкуруч!»",
+      "path": "packs/rules",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Мозаїка",
+      "color": "#1d2b7a",
+      "packs": [
+        "rules",
+        "tables",
+        "entities"
+      ]
+    }
+  ],
+  "socket": true,
+  "grid": {
+    "type": 0,
+    "distance": 1,
+    "units": ""
+  },
+  "url": "https://github.com/heisssen/mozaika",
+  "license": "LICENSE",
+  "manifest": "https://github.com/heisssen/mozaika/releases/latest/download/system.json",
+  "download": "https://github.com/heisssen/mozaika/releases/download/v0.1.0/mozaika-0.1.0.zip",
+  "bugs": "https://github.com/heisssen/mozaika/issues",
+  "readme": "https://github.com/heisssen/mozaika/blob/main/README.md"
+}

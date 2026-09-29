@@ -1,0 +1,46 @@
+{
+  "_id": "a7wd6NjzFzQbdkbT",
+  "_key": "!actors!a7wd6NjzFzQbdkbT",
+  "name": "МУМІ-ТУМІ",
+  "type": "entity",
+  "img": "systems/mozaika/assets/entities/mumi-tumi.webp",
+  "system": {
+    "look": "Круасан із великим підмальованим оком і страусиними ногами.",
+    "queryFrom": "",
+    "queries": [],
+    "changes": [],
+    "shards": 0,
+    "red": 0,
+    "epilogue": "",
+    "notes": "<p>Приклад із зіна «Мозаїка: Нашвидкуруч!» (ілюстрації — Суцільний Максим, CC BY 4.0).</p>",
+    "quality": "класне",
+    "form": "химеру",
+    "trait": "вивчає *реп*",
+    "query": "Як далеко можна зайти?"
+  },
+  "prototypeToken": {
+    "name": "МУМІ-ТУМІ",
+    "texture": {
+      "src": "systems/mozaika/assets/entities/mumi-tumi.webp"
+    },
+    "actorLink": true,
+    "disposition": 1,
+    "displayName": 30
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14",
+    "systemId": "mozaika",
+    "systemVersion": "0.1.0",
+    "createdTime": 0,
+    "modifiedTime": 0,
+    "lastModifiedBy": null
+  }
+}

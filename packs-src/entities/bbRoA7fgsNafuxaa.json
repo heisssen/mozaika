@@ -1,0 +1,46 @@
+{
+  "_id": "bbRoA7fgsNafuxaa",
+  "_key": "!actors!bbRoA7fgsNafuxaa",
+  "name": "ТРОН",
+  "type": "entity",
+  "img": "systems/mozaika/assets/entities/tron.webp",
+  "system": {
+    "look": "Телевізор з ручками та ніжками. Антена-«вуса», на екрані — шум і пульс.",
+    "queryFrom": "",
+    "queries": [],
+    "changes": [],
+    "shards": 0,
+    "red": 0,
+    "epilogue": "",
+    "notes": "<p>Приклад із зіна «Мозаїка: Нашвидкуруч!» (ілюстрації — Суцільний Максим, CC BY 4.0).</p>",
+    "quality": "самотнє",
+    "form": "робота",
+    "trait": "любить *красти*",
+    "query": "Чи зможе він налаштуватися на якийсь канал?"
+  },
+  "prototypeToken": {
+    "name": "ТРОН",
+    "texture": {
+      "src": "systems/mozaika/assets/entities/tron.webp"
+    },
+    "actorLink": true,
+    "disposition": 1,
+    "displayName": 30
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14",
+    "systemId": "mozaika",
+    "systemVersion": "0.1.0",
+    "createdTime": 0,
+    "modifiedTime": 0,
+    "lastModifiedBy": null
+  }
+}

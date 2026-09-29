@@ -1,0 +1,66 @@
+<div class="moz-sheet-body moz-scroll">
+  <header class="moz-sheet-head">
+    <img class="portrait" src="{{actor.img}}" data-edit="img" data-action="editImage" alt="">
+    <div class="head-main">
+      <input class="moz-name" type="text" name="name" value="{{actor.name}}" placeholder="{{localize 'MOZ.Entity.NamePlaceholder'}}">
+      <p class="moz-summary">{{#if summary}}«{{summary}}»{{else}}{{localize "MOZ.Entity.NoSummary"}}{{/if}}</p>
+      <div class="shard-line">
+        {{#each chips}}<img src="{{img}}" alt="">{{/each}}{{#each reds}}<span class="red"></span>{{/each}}
+        <span class="count">{{system.shards}}{{#if system.red}} + {{system.red}} <i class="fa-solid fa-fire"></i>{{/if}}</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="moz-box">
+    <h3>{{localize "MOZ.Entity.Tables"}}
+      {{#if editable}}<a data-action="rollAll" data-tooltip="{{localize 'MOZ.Entity.RollAll'}}"><i class="fa-solid fa-dice-d20"></i> 3d10</a>{{/if}}</h3>
+    {{#each tables}}
+    <div class="moz-table-row">
+      <label>{{localize label}}</label>
+      <input type="text" name="system.{{key}}" value="{{value}}" list="moz-{{key}}-list">
+      <datalist id="moz-{{key}}-list">{{#each options}}<option value="{{this}}">{{/each}}</datalist>
+      {{#if ../editable}}<a data-action="rollTable" data-key="{{key}}" data-tooltip="d10"><i class="fa-solid fa-dice"></i></a>{{/if}}
+    </div>
+    {{/each}}
+    {{#if editable}}
+    <div class="moz-digits">
+      <input name="digits" type="text" placeholder="{{localize 'MOZ.Entity.DigitsPlaceholder'}}">
+      <button type="button" data-action="fromDigits"><i class="fa-solid fa-barcode"></i> {{localize "MOZ.Entity.FromDigits"}}</button>
+    </div>
+    {{/if}}
+    <label class="moz-look">{{localize "MOZ.Entity.Look"}}<textarea name="system.look" rows="2">{{system.look}}</textarea></label>
+  </section>
+
+  <section class="moz-box moz-query-box">
+    <h3>{{localize "MOZ.Query.Label"}}
+      {{#if editable}}<a data-action="answered" data-tooltip="{{localize 'MOZ.Query.AnsweredTip'}}"><i class="fa-solid fa-lightbulb"></i> {{localize "MOZ.Query.Answered"}}</a>{{/if}}</h3>
+    <textarea name="system.query" rows="2" placeholder="{{localize 'MOZ.Query.Placeholder'}}">{{system.query}}</textarea>
+    {{#if system.queryFrom}}<small class="from">{{localize "MOZ.Query.From"}} {{system.queryFrom}}</small>{{/if}}
+    {{#if queries.length}}
+    <ol class="moz-archive">{{#each queries}}<li><s>{{text}}</s>{{#if answer}} → <em>{{answer}}</em>{{/if}} <span class="date">{{date}}</span></li>{{/each}}</ol>
+    {{/if}}
+  </section>
+
+  <section class="moz-box">
+    <h3>{{localize "MOZ.Entity.Changes"}}
+      {{#if editable}}<a data-action="changeSelf" data-tooltip="{{localize 'MOZ.Entity.ChangeTip'}}"><i class="fa-solid fa-shuffle"></i> {{localize "MOZ.Entity.ChangeBtn"}}</a>{{/if}}</h3>
+    <p class="hint">{{localize "MOZ.Entity.NeverDestroyed"}}</p>
+    <ol class="moz-archive">{{#each changes}}<li>{{text}} <span class="date">{{#if dimension}}{{localize "MOZ.Dimension.Label"}} {{dimension}} · {{/if}}{{by}}</span></li>{{else}}<li class="empty">—</li>{{/each}}</ol>
+  </section>
+
+  {{#if editable}}
+  <section class="moz-box moz-shard-box">
+    <h3>{{localize "MOZ.Shard.Title"}}</h3>
+    <div class="btns">
+      <button type="button" data-action="useShard" {{#unless (moz-or system.shards system.red)}}disabled{{/unless}}><i class="fa-solid fa-wand-sparkles"></i> {{localize "MOZ.Shard.UseTitle"}}</button>
+      {{#if canExchange}}<button type="button" data-action="exchange"><i class="fa-solid fa-fire"></i> {{localize "MOZ.Shard.ExchangeTip"}}</button>{{/if}}
+    </div>
+    {{#if isGM}}{{/if}}
+  </section>
+  {{/if}}
+
+  <section class="moz-box">
+    <h3>{{localize "MOZ.Entity.Notes"}}</h3>
+    <prose-mirror name="system.notes" value="{{system.notes}}" toggled="true">{{{notesHTML}}}</prose-mirror>
+  </section>
+</div>

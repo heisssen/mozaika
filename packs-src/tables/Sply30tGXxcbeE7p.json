@@ -1,0 +1,246 @@
+{
+  "_id": "Sply30tGXxcbeE7p",
+  "_key": "!tables!Sply30tGXxcbeE7p",
+  "name": "…й нагадує… (форма)",
+  "img": "icons/svg/d10-grey.svg",
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "description": "«Мозаїка: Нашвидкуруч!» © 2025 Стасів Андрій, CC BY 4.0. Грань 0 на d10 — рядок 10.",
+  "results": [
+    {
+      "_id": "aVMszLezzbGAGv2X",
+      "_key": "!tables.results!Sply30tGXxcbeE7p.aVMszLezzbGAGv2X",
+      "type": "text",
+      "name": "гуманоїда",
+      "description": "гуманоїда",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ryHgKaVACuRofQxX",
+      "_key": "!tables.results!Sply30tGXxcbeE7p.ryHgKaVACuRofQxX",
+      "type": "text",
+      "name": "відчуття",
+      "description": "відчуття",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "5ehyuiqa8HaZls2a",
+      "_key": "!tables.results!Sply30tGXxcbeE7p.5ehyuiqa8HaZls2a",
+      "type": "text",
+      "name": "робота",
+      "description": "робота",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8InrHW5r8UfOPEWo",
+      "_key": "!tables.results!Sply30tGXxcbeE7p.8InrHW5r8UfOPEWo",
+      "type": "text",
+      "name": "тварину",
+      "description": "тварину",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "DY8l0IyTrFVcV6v8",
+      "_key": "!tables.results!Sply30tGXxcbeE7p.DY8l0IyTrFVcV6v8",
+      "type": "text",
+      "name": "ляльку",
+      "description": "ляльку",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "cWWwxlhftjSIbNlv",
+      "_key": "!tables.results!Sply30tGXxcbeE7p.cWWwxlhftjSIbNlv",
+      "type": "text",
+      "name": "рослину",
+      "description": "рослину",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "hAx3iF8e8Wf3NVqC",
+      "_key": "!tables.results!Sply30tGXxcbeE7p.hAx3iF8e8Wf3NVqC",
+      "type": "text",
+      "name": "предмет",
+      "description": "предмет",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9924jEuL1ps46WWZ",
+      "_key": "!tables.results!Sply30tGXxcbeE7p.9924jEuL1ps46WWZ",
+      "type": "text",
+      "name": "химеру",
+      "description": "химеру",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "pMJBV3GwFKUz6RdT",
+      "_key": "!tables.results!Sply30tGXxcbeE7p.pMJBV3GwFKUz6RdT",
+      "type": "text",
+      "name": "примару",
+      "description": "примару",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "pVhlDAuh8Zdje80X",
+      "_key": "!tables.results!Sply30tGXxcbeE7p.pVhlDAuh8Zdje80X",
+      "type": "text",
+      "name": "явище",
+      "description": "явище",
+      "img": "icons/svg/d10-grey.svg",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_stats": {
+        "coreVersion": "14",
+        "systemId": "mozaika",
+        "systemVersion": "0.1.0",
+        "createdTime": 0,
+        "modifiedTime": 0,
+        "lastModifiedBy": null
+      }
+    }
+  ],
+  "folder": null,
+  "sort": 100,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14",
+    "systemId": "mozaika",
+    "systemVersion": "0.1.0",
+    "createdTime": 0,
+    "modifiedTime": 0,
+    "lastModifiedBy": null
+  }
+}

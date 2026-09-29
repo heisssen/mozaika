@@ -1,0 +1,48 @@
+/**
+ * «Мозаїка: Нашвидкуруч!» — Foundry VTT system.
+ * Game © 2025 Стасів Андрій «Дячок» (text & layout), illustrations Суцільний Максим — CC BY 4.0.
+ * https://firstfloor.itch.io/mosaic
+ */
+import { EntityData } from "./module/data.mjs";
+import { EntitySheet } from "./module/sheet.mjs";
+import { MosaicPanel } from "./module/panel.mjs";
+import { ID, registerState, initSocket, watchTimers, getState, userEntity, op } from "./module/state.mjs";
+import * as rules from "./module/rules.mjs";
+
+Hooks.once("init", () => {
+  CONFIG.Actor.dataModels.entity = EntityData;
+  CONFIG.Actor.trackableAttributes = { entity: { bar: [], value: ["shards", "red"] } };
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
+  foundry.documents.collections.Actors.registerSheet(ID, EntitySheet, { types: ["entity"], makeDefault: true, label: "MOZ.Entity.Sheet" });
+  registerState();
+  Handlebars.registerHelper("moz-or", (...a) => a.slice(0, -1).some(Boolean));
+  game.mozaika = { rules, open: () => MosaicPanel.open(), state: getState, op };
+});
+
+Hooks.once("ready", () => {
+  initSocket();
+  watchTimers();
+  MosaicPanel.open();
+});
+
+/* A button in the left toolbar to bring the Mosaic back. */
+Hooks.on("getSceneControlButtons", controls => {
+  const tokens = controls.tokens ?? controls.token;
+  if (!tokens?.tools) return;
+  tokens.tools.mozaika = {
+    name: "mozaika", title: "MOZ.Title", icon: "fa-solid fa-shapes", order: 60, button: true,
+    onChange: () => MosaicPanel.open()
+  };
+});
+
+/* «Лише він говорить, інші гравці слухають і не перебивають його» — chat is the Architect's during the monologue. */
+Hooks.on("chatMessage", (log, text) => {
+  const s = getState();
+  if (s.timer.kind !== "monologue" || s.timer.paused) return true;
+  const mine = userEntity(game.user);
+  if (!mine && game.user.isGM) return true;          // a host who isn't playing
+  if (mine?.uuid === s.architect) return true;
+  if (text.startsWith("/")) return true;
+  ui.notifications.info("MOZ.Notify.Listening", { localize: true });
+  return false;
+});
