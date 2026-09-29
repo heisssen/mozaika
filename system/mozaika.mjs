@@ -8,6 +8,7 @@ import { EntitySheet } from "./module/sheet.mjs";
 import { MosaicPanel } from "./module/panel.mjs";
 import { ID, registerState, initSocket, watchTimers, getState, userEntity, op } from "./module/state.mjs";
 import * as rules from "./module/rules.mjs";
+import { registerDiceSoNice } from "./module/dice-so-nice.mjs";
 
 Hooks.once("init", () => {
   CONFIG.Actor.dataModels.entity = EntityData;
@@ -15,6 +16,8 @@ Hooks.once("init", () => {
   foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
   foundry.documents.collections.Actors.registerSheet(ID, EntitySheet, { types: ["entity"], makeDefault: true, label: "MOZ.Entity.Sheet" });
   registerState();
+  registerDiceSoNice();
+  document.fonts?.load("64px MozDisplay");
   Handlebars.registerHelper("moz-or", (...a) => a.slice(0, -1).some(Boolean));
   game.mozaika = { rules, open: () => MosaicPanel.open(), state: getState, op };
 });

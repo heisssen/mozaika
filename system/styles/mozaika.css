@@ -20,6 +20,7 @@
 /* ---------- windows ---------- */
 .application.mozaika { max-height: calc(100vh - 20px); max-width: calc(100vw - 20px); }
 .application.mozaika .window-header { background: var(--moz-navy); color: #fff; border-bottom: 3px solid var(--moz-ink); }
+.application.mozaika .window-header .header-control { color: #fff; background: none; box-shadow: none; border: none; }
 .application.mozaika .window-title { font-family: "MozDisplay", sans-serif; letter-spacing: .04em; }
 .application.mozaika .window-content {
   background: var(--moz-pink) radial-gradient(circle at 20% 10%, rgba(255,255,255,.25), transparent 50%);
@@ -37,8 +38,8 @@
   font-family: "MozBody", sans-serif; font-size: 1.05em;
 }
 .mozaika textarea { width: 100%; resize: vertical; min-height: 2.6em; }
-.mozaika button { font-family: "MozBody", sans-serif; background: var(--moz-paper); border: 2px solid var(--moz-ink); border-radius: 8px; color: var(--moz-ink); box-shadow: 2px 2px 0 var(--moz-ink); }
-.mozaika button:hover:not([disabled]) { background: #fff; transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--moz-ink); }
+.mozaika button:not(.header-control) { font-family: "MozBody", sans-serif; background: var(--moz-paper); border: 2px solid var(--moz-ink); border-radius: 8px; color: var(--moz-ink); box-shadow: 2px 2px 0 var(--moz-ink); }
+.mozaika button:not(.header-control):hover:not([disabled]) { background: #fff; transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--moz-ink); }
 .mozaika button.primary { background: var(--moz-navy); color: #fff; }
 .mozaika button.primary:hover:not([disabled]) { background: var(--moz-navy-2); }
 .mozaika button.subtle { box-shadow: none; background: transparent; }
