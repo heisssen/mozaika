@@ -31,11 +31,16 @@ page.on("console", m => {
 page.on("pageerror", e => errors.push(`[pageerror] ${e.message}\n${e.stack?.split("\n").slice(0, 4).join("\n")}`));
 
 await page.goto(`${URL}/join`, { waitUntil: "domcontentloaded" });
-await page.waitForSelector("select[name=userid]", { timeout: 30000 });
+await page.waitForSelector("select[name=userid], input[name=username]", { timeout: 30000 });
 const who = process.env.SMOKE_USER ?? "gamemaster";
-const gm = await page.$eval("select[name=userid]", (s, who) => [...s.options].find(o => o.textContent.trim().toLowerCase().startsWith(who.toLowerCase()) && !o.disabled)?.value, who);
-if (!gm) throw new Error(`User "${who}" is not available (already logged in elsewhere?)`);
-await page.selectOption("select[name=userid]", gm);
+if (await page.$("input[name=username]")) {
+  // v14.368+: typed user name instead of a list.
+  await page.fill("input[name=username]", process.env.SMOKE_USERNAME ?? (who.toLowerCase() === "gamemaster" ? "Gamemaster" : who));
+} else {
+  const gm = await page.$eval("select[name=userid]", (s, who) => [...s.options].find(o => o.textContent.trim().toLowerCase().startsWith(who.toLowerCase()) && !o.disabled)?.value, who);
+  if (!gm) throw new Error(`User "${who}" is not available (already logged in elsewhere?)`);
+  await page.selectOption("select[name=userid]", gm);
+}
 await page.click("button[name=join]");
 await page.waitForFunction(() => window.game?.ready, null, { timeout: 90000 });
 await page.waitForTimeout(1500);
