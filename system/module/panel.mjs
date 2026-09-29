@@ -58,6 +58,23 @@ export class MosaicPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     };
   }
 
+  /** Listeners on the window root survive re-renders, so bind them once. */
+  _onFirstRender(ctx, opts) {
+    super._onFirstRender(ctx, opts);
+    // Drop an existing entity (sidebar or compendium) anywhere on the panel to seat it.
+    const root = this.element;
+    root.addEventListener("dragover", ev => { ev.preventDefault(); root.classList.add("moz-drop"); });
+    root.addEventListener("dragleave", ev => { if (!root.contains(ev.relatedTarget)) root.classList.remove("moz-drop"); });
+    root.addEventListener("drop", async ev => {
+      root.classList.remove("moz-drop");
+      const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(ev);
+      if (data?.type !== "Actor" || !data.uuid) return;
+      ev.preventDefault();
+      const uuid = await op("adopt", { uuid: data.uuid }).catch(err => ui.notifications.warn(err.message));
+      if (uuid) ui.notifications.info(game.i18n.format("MOZ.Notify.Seated", { name: fromUuidSync(uuid)?.name ?? "" }));
+    });
+  }
+
   /** Other players' actions re-render the panel; keep whatever this user was typing. */
   async _preRender(ctx, opts) {
     await super._preRender(ctx, opts);

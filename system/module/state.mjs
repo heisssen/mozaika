@@ -182,6 +182,26 @@ const OPS = {
     s.seats.push(a.uuid);
     return a.uuid;
   },
+  /** An existing entity dropped onto the panel: import it from a compendium if needed, seat it, give it to the dropper. */
+  async adopt(s, d, { user }) {
+    let a = await fromUuid(d.uuid);
+    if (!a || a.documentName !== "Actor" || a.type !== "entity") throw new Error(L("MOZ.Notify.NotEntity"));
+    if (a.pack) {
+      const data = game.actors.fromCompendium(a);
+      data.ownership = { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER };
+      a = await Actor.create(data);
+    }
+    // A player takes an unowned entity as their own; the GM just seats it.
+    if (user && !user.isGM) {
+      const taken = game.users.some(u => !u.isGM && u !== user && a.testUserPermission(u, "OWNER"));
+      if (!taken) {
+        await a.update({ [`ownership.${user.id}`]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER });
+        if (!user.character) await user.update({ character: a.id });
+      }
+    }
+    if (!s.seats.includes(a.uuid)) s.seats.push(a.uuid);
+    return a.uuid;
+  },
   async seat(s, d) {
     const i = s.seats.indexOf(d.uuid);
     if (d.remove) { if (i >= 0) s.seats.splice(i, 1); return; }

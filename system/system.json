@@ -2,7 +2,7 @@
   "id": "mozaika",
   "title": "Мозаїка: Нашвидкуруч!",
   "description": "Кооперативна настільна рольова гра серед яскравого сюрреалізму й абсурду — без ведучого, без підготовки та без граників. Автоматизація для Foundry VTT: таймер Архітектора, виміри й реалії, запити й забава, уламки, хроніка світу. Гра © 2025 Стасів Андрій, CC BY 4.0.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "compatibility": {
     "minimum": "14",
     "verified": "14"
@@ -99,7 +99,7 @@
   "url": "https://github.com/heisssen/mozaika",
   "license": "LICENSE",
   "manifest": "https://github.com/heisssen/mozaika/releases/latest/download/system.json",
-  "download": "https://github.com/heisssen/mozaika/releases/download/v0.1.1/mozaika-0.1.1.zip",
+  "download": "https://github.com/heisssen/mozaika/releases/download/v0.1.2/mozaika-0.1.2.zip",
   "bugs": "https://github.com/heisssen/mozaika/issues",
   "readme": "https://github.com/heisssen/mozaika/blob/main/README.md",
   "background": "systems/mozaika/assets/ui/cover.webp"

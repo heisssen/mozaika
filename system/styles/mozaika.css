@@ -178,3 +178,4 @@
 
 @media (max-width: 640px) { .moz-step .two { grid-template-columns: 1fr; } }
 .journal-entry-page .moz-how { background: #fbe3ec; border-left: 4px solid #1d2b7a; padding: 4px 8px; border-radius: 4px; }
+.mozaika.moz-panel.moz-drop .window-content { outline: 4px dashed var(--moz-yellow); outline-offset: -8px; }

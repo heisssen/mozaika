@@ -1,82 +1,204 @@
 {
-  "TYPES": { "Actor": { "entity": "Entity" } },
+  "TYPES": {
+    "Actor": {
+      "entity": "Entity"
+    }
+  },
   "MOZ": {
     "Title": "Mosaic",
-    "Setting": { "TimerSound": "Timer sound", "TimerSoundHint": "A chime when the Architect's or an epilogue's time runs out." },
+    "Setting": {
+      "TimerSound": "Timer sound",
+      "TimerSoundHint": "A chime when the Architect's or an epilogue's time runs out."
+    },
     "Notify": {
       "Listening": "The Architect is speaking — listen, don't interrupt.",
       "NoGM": "An active GM is needed to keep the shared state.",
       "NoEntity": "Create your entity first.",
       "NoEntities": "There are no entities at the table.",
       "OnlyArchitect": "During the monologue only the Architect records realities.",
-      "NotEnoughShards": "Not enough shards."
+      "NotEnoughShards": "Not enough shards.",
+      "NotEntity": "Only an entity can be dropped here.",
+      "Seated": "{name} joins the Mosaic table."
     },
-    "Consent": { "Title": "Change an entity", "Ask": "{from} wants to change your entity «{name}» for a shard. Agree?", "Refused": "{name} refuses the change." },
-    "Chronicle": { "Name": "Mosaic Chronicle — {date}", "Cast": "Entities", "Epilogue": "Epilogues" },
+    "Consent": {
+      "Title": "Change an entity",
+      "Ask": "{from} wants to change your entity «{name}» for a shard. Agree?",
+      "Refused": "{name} refuses the change."
+    },
+    "Chronicle": {
+      "Name": "Mosaic Chronicle — {date}",
+      "Cast": "Entities",
+      "Epilogue": "Epilogues"
+    },
     "Entity": {
-      "Sheet": "Entity sheet", "NewName": "New entity", "NamePlaceholder": "Entity name",
-      "NoSummary": "Roll a d10 on the three tables or enter digits.", "Tables": "Who are you?",
-      "Table": { "quality": "Quality", "form": "Form", "trait": "Trait" },
-      "RollAll": "Roll all three", "DigitsPlaceholder": "Phone number, receipt, date…", "FromDigits": "From the last 3 digits",
-      "NeedDigits": "At least 3 digits are needed.", "Look": "Looks like", "Changes": "Changes", "ChangeBtn": "Change myself",
-      "ChangeTip": "Spend a shard to change your entity", "ChangeTitle": "What changes?",
-      "ChangeHint": "An entity can change but is never destroyed.", "NeverDestroyed": "An entity cannot be destroyed — only changed.", "Notes": "Notes"
+      "Sheet": "Entity sheet",
+      "NewName": "New entity",
+      "NamePlaceholder": "Entity name",
+      "NoSummary": "Roll a d10 on the three tables or enter digits.",
+      "Tables": "Who are you?",
+      "Table": {
+        "quality": "Quality",
+        "form": "Form",
+        "trait": "Trait"
+      },
+      "RollAll": "Roll all three",
+      "DigitsPlaceholder": "Phone number, receipt, date…",
+      "FromDigits": "From the last 3 digits",
+      "NeedDigits": "At least 3 digits are needed.",
+      "Look": "Looks like",
+      "Changes": "Changes",
+      "ChangeBtn": "Change myself",
+      "ChangeTip": "Spend a shard to change your entity",
+      "ChangeTitle": "What changes?",
+      "ChangeHint": "An entity can change but is never destroyed.",
+      "NeverDestroyed": "An entity cannot be destroyed — only changed.",
+      "Notes": "Notes"
     },
     "Setup": {
-      "Title": "In a Hurry!", "Lead": "Assembling the Mosaic: safety, entities, Queries, Quest.", "Entities": "Entities",
+      "Title": "In a Hurry!",
+      "Lead": "Assembling the Mosaic: safety, entities, Queries, Quest.",
+      "Entities": "Entities",
       "EntitiesLead": "Each player creates one entity. The order below is the seating order.",
-      "SeatUp": "Up", "SeatDown": "Down", "NoEntities": "Nobody yet.", "CreateMine": "Create my entity", "CreateExtra": "Add an entity", "Start": "Let's go!"
+      "SeatUp": "Up",
+      "SeatDown": "Down",
+      "NoEntities": "Nobody yet.",
+      "CreateMine": "Create my entity",
+      "CreateExtra": "Add an entity",
+      "Start": "Let's go!",
+      "DropHint": "Or drag an existing entity here — from the Actors tab or a compendium."
     },
     "Safety": {
-      "Title": "Safety", "Lead": "Agree on what's OK and what's off the table. The X-card is always at hand.", "Ok": "OK", "NotOk": "Not OK",
-      "XCard": "X-card", "XCardTip": "X-card: pause the timer and remove the moment — no explanation needed",
+      "Title": "Safety",
+      "Lead": "Agree on what's OK and what's off the table. The X-card is always at hand.",
+      "Ok": "OK",
+      "NotOk": "Not OK",
+      "XCard": "X-card",
+      "XCardTip": "X-card: pause the timer and remove the moment — no explanation needed",
       "XCardHint": "Someone raised the X-card. The timer is paused — remove the last moment, no explanations."
     },
     "Query": {
-      "Title": "Queries", "Label": "Query", "Lead": "Everyone invents the Query for the entity of the player on their right: a question it will seek an answer to across dimensions.",
-      "ForRight": "Query for <strong>{name}</strong>", "Placeholder": "What does this entity seek?", "NeedSeats": "Queries appear once there are at least two entities.",
-      "Yours": "Your Query", "From": "Author:", "Answered": "Answer found", "AnsweredTip": "The entity found its answer — record it and take a new Query",
-      "AnsweredTitle": "Answer to the Query", "Answer": "What answer was found?", "New": "New Query", "Save": "Save", "Rewritten": "{name} has a new Query"
+      "Title": "Queries",
+      "Label": "Query",
+      "Lead": "Everyone invents the Query for the entity of the player on their right: a question it will seek an answer to across dimensions.",
+      "ForRight": "Query for <strong>{name}</strong>",
+      "Placeholder": "What does this entity seek?",
+      "NeedSeats": "Queries appear once there are at least two entities.",
+      "Yours": "Your Query",
+      "From": "Author:",
+      "Answered": "Answer found",
+      "AnsweredTip": "The entity found its answer — record it and take a new Query",
+      "AnsweredTitle": "Answer to the Query",
+      "Answer": "What answer was found?",
+      "New": "New Query",
+      "Save": "Save",
+      "Rewritten": "{name} has a new Query"
     },
-    "Quest": { "Title": "Quest", "Label": "Quest", "Lead": "A shared goal leading everyone through the dimensions. It may change along the way.", "Placeholder": "E.g. find who stole the Moon", "Changed": "Quest changed" },
+    "Quest": {
+      "Title": "Quest",
+      "Label": "Quest",
+      "Lead": "A shared goal leading everyone through the dimensions. It may change along the way.",
+      "Placeholder": "E.g. find who stole the Moon",
+      "Changed": "Quest changed"
+    },
     "Options": {
-      "Title": "Options", "StartShards": "Starting shards", "Seconds": "Architect seconds", "Decay": "Mosaic decay", "Scenes": "A scene per dimension",
+      "Title": "Options",
+      "StartShards": "Starting shards",
+      "Seconds": "Architect seconds",
+      "Decay": "Mosaic decay",
+      "Scenes": "A scene per dimension",
       "DecayHint": "Decay: each next Architect gets 5 seconds less. When it reaches zero, the Mosaic is complete."
     },
     "Phase": {
-      "StartCard": "The Mosaic is assembling!", "StartHint": "Each entity receives {n} shards.", "Epilogue": "Epilogue",
-      "EpilogueLead": "Each in turn has 30 seconds to tell what became of their entity.", "EpilogueMine": "My epilogue (for the chronicle)",
-      "EpilogueOf": "Epilogue: {name}", "EpilogueHint": "30 seconds — what happened to the entity after it all?", "NextEpilogue": "Next",
-      "Complete": "Complete the Mosaic", "CompleteAsk": "Move on to the epilogues?", "CompleteHint": "Epilogue time — {n} seconds each.",
-      "Done": "The Mosaic is complete!", "Reset": "New Mosaic", "ResetAsk": "Start a new game? Entities stay, the table state resets."
+      "StartCard": "The Mosaic is assembling!",
+      "StartHint": "Each entity receives {n} shards.",
+      "Epilogue": "Epilogue",
+      "EpilogueLead": "Each in turn has 30 seconds to tell what became of their entity.",
+      "EpilogueMine": "My epilogue (for the chronicle)",
+      "EpilogueOf": "Epilogue: {name}",
+      "EpilogueHint": "30 seconds — what happened to the entity after it all?",
+      "NextEpilogue": "Next",
+      "Complete": "Complete the Mosaic",
+      "CompleteAsk": "Move on to the epilogues?",
+      "CompleteHint": "Epilogue time — {n} seconds each.",
+      "Done": "The Mosaic is complete!",
+      "Reset": "New Mosaic",
+      "ResetAsk": "Start a new game? Entities stay, the table state resets."
     },
     "Dimension": {
-      "Label": "Dimension", "New": "New dimension! #{n}", "NewTitle": "New dimension!", "Shout": "New dimension!",
-      "Hint": "Whoever shouted is the Architect of the new dimension.", "Open": "Open", "Architect": "Architect",
-      "ArchitectIs": "Architect: <strong>{name}</strong>", "ArchitectWas": "Architect: {name}", "TitleLabel": "Dimension name",
-      "TitlePlaceholder": "What is this dimension called?", "PageName": "Dimension {n}: {title}", "SceneName": "Dimension {n}",
-      "NoneYet": "To begin, someone has to shout «New dimension!»", "Empty": "No realities yet."
+      "Label": "Dimension",
+      "New": "New dimension! #{n}",
+      "NewTitle": "New dimension!",
+      "Shout": "New dimension!",
+      "Hint": "Whoever shouted is the Architect of the new dimension.",
+      "Open": "Open",
+      "Architect": "Architect",
+      "ArchitectIs": "Architect: <strong>{name}</strong>",
+      "ArchitectWas": "Architect: {name}",
+      "TitleLabel": "Dimension name",
+      "TitlePlaceholder": "What is this dimension called?",
+      "PageName": "Dimension {n}: {title}",
+      "SceneName": "Dimension {n}",
+      "NoneYet": "To begin, someone has to shout «New dimension!»",
+      "Empty": "No realities yet."
     },
     "Timer": {
-      "Sec": "sec", "Start": "Speak", "MonologueStart": "{name} creates a dimension ({n} sec)",
+      "Sec": "sec",
+      "Start": "Speak",
+      "MonologueStart": "{name} creates a dimension ({n} sec)",
       "MonologueRule": "Only the Architect speaks. Everyone else listens and does not interrupt.",
-      "MonologueEnd": "{name}'s time is up!", "MonologueEndHint": "The Architect gets a shard. Now everyone plays."
+      "MonologueEnd": "{name}'s time is up!",
+      "MonologueEndHint": "The Architect gets a shard. Now everyone plays."
     },
     "Reality": {
-      "Placeholder": "A new reality of this dimension…", "PlaceholderArch": "What is true in this dimension?",
-      "ChangeTip": "Spend a shard to change this reality", "ChangeTitle": "Change a reality", "Now": "Now it is:",
+      "Placeholder": "A new reality of this dimension…",
+      "PlaceholderArch": "What is true in this dimension?",
+      "ChangeTip": "Spend a shard to change this reality",
+      "ChangeTitle": "Change a reality",
+      "Now": "Now it is:",
       "ChangeHint": "The old reality is struck out, the new one becomes true."
     },
     "Shard": {
-      "Title": "Shards", "Award": "Award", "AwardTitle": "Award a shard", "AwardTip": "Award a shard", "Awarded": "{name} receives a shard!",
-      "For": "For", "Note": "Note", "From": "from {who}",
-      "Reason": { "monologue": "a great Architect monologue", "query": "a step toward the Query's answer", "laughter": "everyone laughed", "realities": "clever use of realities" },
-      "Give": "Give", "GiveTitle": "Give a shard", "GiveTip": "Give a shard to another entity", "Given": "{from} gives a shard to {to}", "To": "To",
-      "ExchangeTip": "Exchange 5 shards for a red one", "Red": "{name} exchanges 5 shards for a red one!",
-      "UseTitle": "Use a shard", "UseTip": "Use a shard", "UseHint": "A red shard is worth five ordinary ones.", "UseRed": "Spend a red one", "How": "How",
-      "Purpose": { "changeReality": "Change a reality", "changeEntity": "Change an entity", "emphasise": "Emphasise a moment" },
-      "WhichReality": "Which reality", "WhichEntity": "Which entity", "What": "What exactly", "WhatPlaceholder": "Describe the change…", "Spend": "Spend",
-      "Use": { "changeReality": "{name} changes a reality", "changeEntity": "{name} changes an entity", "emphasise": "{name} emphasises a moment" }
+      "Title": "Shards",
+      "Award": "Award",
+      "AwardTitle": "Award a shard",
+      "AwardTip": "Award a shard",
+      "Awarded": "{name} receives a shard!",
+      "For": "For",
+      "Note": "Note",
+      "From": "from {who}",
+      "Reason": {
+        "monologue": "a great Architect monologue",
+        "query": "a step toward the Query's answer",
+        "laughter": "everyone laughed",
+        "realities": "clever use of realities"
+      },
+      "Give": "Give",
+      "GiveTitle": "Give a shard",
+      "GiveTip": "Give a shard to another entity",
+      "Given": "{from} gives a shard to {to}",
+      "To": "To",
+      "ExchangeTip": "Exchange 5 shards for a red one",
+      "Red": "{name} exchanges 5 shards for a red one!",
+      "UseTitle": "Use a shard",
+      "UseTip": "Use a shard",
+      "UseHint": "A red shard is worth five ordinary ones.",
+      "UseRed": "Spend a red one",
+      "How": "How",
+      "Purpose": {
+        "changeReality": "Change a reality",
+        "changeEntity": "Change an entity",
+        "emphasise": "Emphasise a moment"
+      },
+      "WhichReality": "Which reality",
+      "WhichEntity": "Which entity",
+      "What": "What exactly",
+      "WhatPlaceholder": "Describe the change…",
+      "Spend": "Spend",
+      "Use": {
+        "changeReality": "{name} changes a reality",
+        "changeEntity": "{name} changes an entity",
+        "emphasise": "{name} emphasises a moment"
+      }
     }
   }
 }
