@@ -50,15 +50,3 @@ Hooks.on("getSceneControlButtons", controls => {
     onChange: () => MosaicPanel.open()
   };
 });
-
-/* «Лише він говорить, інші гравці слухають і не перебивають його» — chat is the Architect's during the monologue. */
-Hooks.on("chatMessage", (log, text) => {
-  const s = getState();
-  if (s.timer.kind !== "monologue" || s.timer.paused) return true;
-  const mine = userEntity(game.user);
-  if (!mine && game.user.isGM) return true;          // a host who isn't playing
-  if (mine?.uuid === s.architect) return true;
-  if (text.startsWith("/")) return true;
-  ui.notifications.info("MOZ.Notify.Listening", { localize: true });
-  return false;
-});

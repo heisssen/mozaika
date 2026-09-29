@@ -4,7 +4,7 @@
  * shards) → epilogue (30 s each) → done (chronicle).
  */
 import { ID, getState, op, seatActors, myQueryTarget, userEntity } from "./state.mjs";
-import { secondsLeft, monologueSeconds, AWARD_REASONS, RED_VALUE } from "./rules.mjs";
+import { secondsLeft, monologueSeconds, AWARD_REASONS } from "./rules.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin, DialogV2 } = foundry.applications.api;
 const L = (k, d) => (d ? game.i18n.format(k, d) : game.i18n.localize(k));
@@ -23,7 +23,7 @@ export class MosaicPanel extends HandlebarsApplicationMixin(ApplicationV2) {
       createEntity: MosaicPanel.#createEntity, openEntity: MosaicPanel.#openEntity, seat: MosaicPanel.#seat,
       start: MosaicPanel.#start, newDimension: MosaicPanel.#newDimension, startMonologue: MosaicPanel.#startMonologue,
       pause: MosaicPanel.#pause, xcard: MosaicPanel.#xcard, award: MosaicPanel.#award, give: MosaicPanel.#give,
-      useShard: MosaicPanel.#useShard, exchange: MosaicPanel.#exchange, changeReality: MosaicPanel.#changeReality,
+      useShard: MosaicPanel.#useShard, changeReality: MosaicPanel.#changeReality,
       complete: MosaicPanel.#complete, nextEpilogue: MosaicPanel.#nextEpilogue, reset: MosaicPanel.#reset,
       openChronicle: MosaicPanel.#openChronicle
     }
@@ -44,10 +44,8 @@ export class MosaicPanel extends HandlebarsApplicationMixin(ApplicationV2) {
       phase: { setup: s.phase === "setup", play: s.phase === "play", epilogue: s.phase === "epilogue", done: s.phase === "done" },
       seats: seats.map((a, i) => ({
         uuid: a.uuid, name: a.name, img: a.img, summary: a.system.summary, query: a.system.query, i,
-        shards: a.system.shards, red: a.system.red, mine: a === mine, owner: a.isOwner, architect: a.uuid === s.architect,
-        chips: Array.from({ length: Math.min(a.system.shards, 12) }, (_, k) => ({ img: SHARD_IMG(k + i) })),
-        reds: Array.from({ length: a.system.red }, () => ({})),
-        canExchange: a.isOwner && a.system.shards >= RED_VALUE
+        shards: a.system.shards, mine: a === mine, owner: a.isOwner, architect: a.uuid === s.architect,
+        chips: Array.from({ length: Math.min(a.system.shards, 12) }, (_, k) => ({ img: SHARD_IMG(k + i) }))
       })),
       realities: s.dimension.realities.map(r => ({ ...r })).reverse(),
       nextSeconds: monologueSeconds(s.architects, s.options),
@@ -156,7 +154,7 @@ export class MosaicPanel extends HandlebarsApplicationMixin(ApplicationV2) {
   static async #newDimension() {
     const s = getState();
     const seats = seatActors(s);
-    const def = s.nextArchitect || userEntity(game.user)?.uuid || seats[0]?.uuid;
+    const def = s.nextArchitect || seats.find(a => a.uuid !== s.architect)?.uuid || seats[0]?.uuid;
     const options = seats.map(a => `<option value="${a.uuid}" ${a.uuid === def ? "selected" : ""}>${foundry.utils.escapeHTML(a.name)}</option>`).join("");
     const res = await DialogV2.prompt({
       window: { title: "MOZ.Dimension.NewTitle", icon: "fa-solid fa-door-open" }, classes: ["mozaika", "moz-dialog"],
@@ -200,7 +198,6 @@ export class MosaicPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     const uuid = t.closest("[data-uuid]").dataset.uuid;
     return useShardDialog(uuid);
   }
-  static #exchange(e, t) { return op("exchange", { uuid: t.closest("[data-uuid]").dataset.uuid }).catch(err => ui.notifications.warn(err.message)); }
   static async #changeReality(e, t) {
     const mine = userEntity(game.user);
     if (!mine) return ui.notifications.warn("MOZ.Notify.NoEntity", { localize: true });
@@ -238,8 +235,7 @@ export async function useShardDialog(uuid) {
     <div class="form-group"><label>${L("MOZ.Shard.WhichReality")}</label><select name="r">${reals.map(r => `<option value="${r.id}">${foundry.utils.escapeHTML(r.text.slice(0, 70))}</option>`).join("")}</select></div>
     <div class="form-group"><label>${L("MOZ.Shard.WhichEntity")}</label><select name="e">${seats.map(a => `<option value="${a.uuid}" ${a === me ? "selected" : ""}>${foundry.utils.escapeHTML(a.name)}</option>`).join("")}</select></div>
     <div class="form-group"><label>${L("MOZ.Shard.What")}</label><input name="t" type="text" placeholder="${L("MOZ.Shard.WhatPlaceholder")}"></div>
-    ${me?.system.red ? `<label class="checkbox"><input type="checkbox" name="red"> ${L("MOZ.Shard.UseRed")}</label>` : ""}
-    <p class="hint">${L("MOZ.Shard.UseHint")}</p>`;
+`;
   const res = await DialogV2.prompt({
     window: { title: "MOZ.Shard.UseTitle", icon: "fa-solid fa-wand-sparkles" }, classes: ["mozaika", "moz-dialog"], content,
     ok: { label: "MOZ.Shard.Spend", callback: (ev, b) => {

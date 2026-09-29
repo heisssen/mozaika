@@ -1,5 +1,5 @@
 /** Сутність sheet: the three tables, Query (with answered ones), changes, shards, epilogue, notes. */
-import { ENTITY_TABLES, TABLE_KEYS, rowFromDigit, rowsFromDigits, describeEntity, RED_VALUE } from "./rules.mjs";
+import { ENTITY_TABLES, TABLE_KEYS, rowFromDigit, rowsFromDigits, describeEntity } from "./rules.mjs";
 import { op, getState } from "./state.mjs";
 import { useShardDialog } from "./panel.mjs";
 
@@ -15,8 +15,7 @@ export class EntitySheet extends HandlebarsApplicationMixin(foundry.applications
     form: { submitOnChange: true },
     actions: {
       rollTable: EntitySheet.#rollTable, fromDigits: EntitySheet.#fromDigits, rollAll: EntitySheet.#rollAll,
-      answered: EntitySheet.#answered, useShard: EntitySheet.#useShard, changeSelf: EntitySheet.#changeSelf,
-      exchange: EntitySheet.#exchange
+      answered: EntitySheet.#answered, useShard: EntitySheet.#useShard, changeSelf: EntitySheet.#changeSelf
     }
   };
 
@@ -32,8 +31,6 @@ export class EntitySheet extends HandlebarsApplicationMixin(foundry.applications
       queries: [...sys.queries].reverse(),
       changes: [...sys.changes].reverse(),
       chips: Array.from({ length: Math.min(sys.shards, 15) }, (_, i) => ({ img: `systems/mozaika/assets/shards/Ulamok${(i % 3) + 1}.png` })),
-      reds: Array.from({ length: sys.red }, () => ({})),
-      canExchange: sys.shards >= RED_VALUE && this.isEditable,
       playing: getState().phase === "play",
       notesHTML: await TextEditor.enrichHTML(sys.notes, { relativeTo: this.actor })
     });
@@ -88,5 +85,4 @@ export class EntitySheet extends HandlebarsApplicationMixin(foundry.applications
     });
     if (text) return op("useShard", { uuid: this.actor.uuid, purpose: "changeEntity", target: this.actor.uuid, text }).catch(err => ui.notifications.warn(err.message));
   }
-  static #exchange() { return op("exchange", { uuid: this.actor.uuid }).catch(err => ui.notifications.warn(err.message)); }
 }

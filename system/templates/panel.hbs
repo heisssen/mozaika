@@ -112,14 +112,13 @@
       <div class="moz-holder {{#if architect}}architect{{/if}} {{#if mine}}mine{{/if}}" data-uuid="{{uuid}}">
         <img class="face" src="{{img}}" data-action="openEntity" alt="">
         <div class="info"><strong>{{name}}</strong><small>{{query}}</small>
-          <div class="chips">{{#each chips}}<img src="{{img}}" alt="">{{/each}}{{#each reds}}<span class="red"></span>{{/each}}
-            <span class="count">{{shards}}{{#if red}} + {{red}}<i class="fa-solid fa-fire"></i>{{/if}}</span></div>
+          <div class="chips">{{#each chips}}<img src="{{img}}" alt="">{{/each}}
+            <span class="count">{{shards}}</span></div>
         </div>
         <div class="acts">
           {{#unless mine}}<a data-action="award" data-tooltip="{{localize 'MOZ.Shard.AwardTip'}}"><i class="fa-solid fa-gem"></i>+</a>{{/unless}}
           {{#if owner}}<a data-action="useShard" data-tooltip="{{localize 'MOZ.Shard.UseTip'}}"><i class="fa-solid fa-wand-sparkles"></i></a>
           <a data-action="give" data-tooltip="{{localize 'MOZ.Shard.GiveTip'}}"><i class="fa-solid fa-hand-holding-heart"></i></a>{{/if}}
-          {{#if canExchange}}<a data-action="exchange" data-tooltip="{{localize 'MOZ.Shard.ExchangeTip'}}"><i class="fa-solid fa-fire"></i></a>{{/if}}
         </div>
       </div>
       {{/each}}

@@ -3,7 +3,7 @@
  * options, safety. Stored in a world setting; every change runs on the GM through `op()` so players
  * (who can't write world settings or other players' actors) take part equally.
  */
-import { monologueSeconds, epilogueOrder, exchangeRed, spendShard, queryAssignments } from "./rules.mjs";
+import { monologueSeconds, epilogueOrder, spendShard, queryAssignments } from "./rules.mjs";
 
 export const ID = "mozaika";
 const CHANNEL = `system.${ID}`;
@@ -298,8 +298,7 @@ const OPS = {
     if (!text || !s.dimension.n) return false;
     const monologue = s.timer.kind === "monologue" && !s.timer.paused;
     const isArchitect = self?.uuid === s.architect || d.asArchitect;
-    if (monologue && !isArchitect) throw new Error(L("MOZ.Notify.OnlyArchitect"));
-    s.dimension.realities.push({ id: foundry.utils.randomID(), text, by: self?.name ?? who, byUuid: self?.uuid ?? "", architect: monologue && isArchitect, crossed: false, ts: now() });
+    s.dimension.realities.push({ id: foundry.utils.randomID(), text, by: self?.name ?? who, byUuid: self?.uuid ?? "", architect: monologue, crossed: false, ts: now() });
     await archiveDimension(s);
   },
 
@@ -309,14 +308,6 @@ const OPS = {
     if (!a) return false;
     await a.update({ "system.shards": a.system.shards + 1 });
     await card("award", L("MOZ.Shard.Awarded", { name: esc(a.name) }), `${L(`MOZ.Shard.Reason.${d.reason}`)}${d.note ? ` — <em>${esc(d.note)}</em>` : ""}<span class="from">${L("MOZ.Shard.From", { who: esc(self?.name ?? who) })}</span>`, { actor: a, icon: "fa-gem" });
-    return false;
-  },
-  async exchange(s, d) {
-    const a = actorOf(d.uuid);
-    const r = a && exchangeRed(a.system);
-    if (!r) throw new Error(L("MOZ.Notify.NotEnoughShards"));
-    await a.update({ "system.shards": r.shards, "system.red": r.red });
-    await card("red", L("MOZ.Shard.Red", { name: esc(a.name) }), "", { actor: a, icon: "fa-gem" });
     return false;
   },
   async give(s, d) {

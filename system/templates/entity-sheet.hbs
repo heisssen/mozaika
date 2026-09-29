@@ -5,8 +5,8 @@
       <input class="moz-name" type="text" name="name" value="{{actor.name}}" placeholder="{{localize 'MOZ.Entity.NamePlaceholder'}}">
       <p class="moz-summary">{{#if summary}}«{{summary}}»{{else}}{{localize "MOZ.Entity.NoSummary"}}{{/if}}</p>
       <div class="shard-line">
-        {{#each chips}}<img src="{{img}}" alt="">{{/each}}{{#each reds}}<span class="red"></span>{{/each}}
-        <span class="count">{{system.shards}}{{#if system.red}} + {{system.red}} <i class="fa-solid fa-fire"></i>{{/if}}</span>
+        {{#each chips}}<img src="{{img}}" alt="">{{/each}}
+        <span class="count">{{system.shards}}</span>
       </div>
     </div>
   </header>
@@ -52,8 +52,7 @@
   <section class="moz-box moz-shard-box">
     <h3>{{localize "MOZ.Shard.Title"}}</h3>
     <div class="btns">
-      <button type="button" data-action="useShard" {{#unless (moz-or system.shards system.red)}}disabled{{/unless}}><i class="fa-solid fa-wand-sparkles"></i> {{localize "MOZ.Shard.UseTitle"}}</button>
-      {{#if canExchange}}<button type="button" data-action="exchange"><i class="fa-solid fa-fire"></i> {{localize "MOZ.Shard.ExchangeTip"}}</button>{{/if}}
+      <button type="button" data-action="useShard" {{#unless system.shards}}disabled{{/unless}}><i class="fa-solid fa-wand-sparkles"></i> {{localize "MOZ.Shard.UseTitle"}}</button>
     </div>
     {{#if isGM}}{{/if}}
   </section>

@@ -11,11 +11,9 @@
       "TimerSoundHint": "A chime when the Architect's or an epilogue's time runs out."
     },
     "Notify": {
-      "Listening": "The Architect is speaking — listen, don't interrupt.",
       "NoGM": "An active GM is needed to keep the shared state.",
       "NoEntity": "Create your entity first.",
       "NoEntities": "There are no entities at the table.",
-      "OnlyArchitect": "During the monologue only the Architect records realities.",
       "NotEnoughShards": "Not enough shards.",
       "NotEntity": "Only an entity can be dropped here.",
       "Seated": "{name} joins the Mosaic table."
@@ -56,7 +54,7 @@
     },
     "Setup": {
       "Title": "In a Hurry!",
-      "Lead": "Assembling the Mosaic: safety, entities, Queries, Quest.",
+      "Lead": "Assembling the Mosaic: safety, entities, Queries, Task.",
       "Entities": "Entities",
       "EntitiesLead": "Each player creates one entity. The order below is the seating order.",
       "SeatUp": "Up",
@@ -94,11 +92,11 @@
       "Rewritten": "{name} has a new Query"
     },
     "Quest": {
-      "Title": "Quest",
-      "Label": "Quest",
+      "Title": "Task",
+      "Label": "Task",
       "Lead": "A shared goal leading everyone through the dimensions. It may change along the way.",
       "Placeholder": "E.g. find who stole the Moon",
-      "Changed": "Quest changed"
+      "Changed": "Task changed"
     },
     "Options": {
       "Title": "Options",
@@ -129,7 +127,7 @@
       "New": "New dimension! #{n}",
       "NewTitle": "New dimension!",
       "Shout": "New dimension!",
-      "Hint": "Whoever shouted is the Architect of the new dimension.",
+      "Hint": "The previous Architect passes the role to whoever they like (or to whoever shouted).",
       "Open": "Open",
       "Architect": "Architect",
       "ArchitectIs": "Architect: <strong>{name}</strong>",
@@ -145,7 +143,7 @@
       "Sec": "sec",
       "Start": "Speak",
       "MonologueStart": "{name} creates a dimension ({n} sec)",
-      "MonologueRule": "Only the Architect speaks. Everyone else listens and does not interrupt.",
+      "MonologueRule": "Only the Architect speaks. Everyone else listens without interrupting — and may note realities down.",
       "MonologueEnd": "{name}'s time is up!",
       "MonologueEndHint": "The Architect gets a shard. Now everyone plays."
     },
@@ -177,12 +175,8 @@
       "GiveTip": "Give a shard to another entity",
       "Given": "{from} gives a shard to {to}",
       "To": "To",
-      "ExchangeTip": "Exchange 5 shards for a red one",
-      "Red": "{name} exchanges 5 shards for a red one!",
       "UseTitle": "Use a shard",
       "UseTip": "Use a shard",
-      "UseHint": "A red shard is worth five ordinary ones.",
-      "UseRed": "Spend a red one",
       "How": "How",
       "Purpose": {
         "changeReality": "Change a reality",
